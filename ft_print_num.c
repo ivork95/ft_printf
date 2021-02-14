@@ -6,11 +6,12 @@
 /*   By: ivork <ivork@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/15 23:10:02 by ivork         #+#    #+#                 */
-/*   Updated: 2021/02/12 10:41:00 by ivork         ########   odam.nl         */
+/*   Updated: 2021/02/14 13:33:28 by ivork         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
+#include <limits.h>
 #include "ft_printf.h"
 
 extern int	g_count;
@@ -70,7 +71,7 @@ void	ft_print_unsi(long long x, t_flags flag)
 	char	*str;
 
 	if (x < 0)
-		x = 4294967295 + x - 1;
+		x = UINT_MAX + x - 1;
 	if (flag.preci == true && flag.precision >= 0)
 		flag.zero = false;
 	if (x == 0 && flag.preci == true && flag.precision == 0)

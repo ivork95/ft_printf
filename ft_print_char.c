@@ -2,11 +2,11 @@
 /*                                                                            */
 /*                                                        ::::::::            */
 /*   ft_print_char.c                                    :+:    :+:            */
-/*                                                     +:+                    */
+/*                                                     +:+                    */ 
 /*   By: ivork <ivork@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/15 22:44:26 by ivork         #+#    #+#                 */
-/*   Updated: 2021/02/12 10:33:15 by ivork         ########   odam.nl         */
+/*   Updated: 2021/02/12 14:24:18 by ivork         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ void	ft_print_char(char c, t_flags flags)
 		ft_putchar_fd(c, 1);
 		g_count++;
 	}
-	while (count - 1 > 0 && count < 50)
+	while (count - 1 > 0)
 	{
 		if (flags.zero == true && flags.left_align == false)
 			ft_putchar_fd('0', 1);

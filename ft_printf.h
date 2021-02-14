@@ -6,7 +6,7 @@
 /*   By: ivork <ivork@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/15 22:39:36 by ivork         #+#    #+#                 */
-/*   Updated: 2021/02/12 00:36:06 by ivork         ########   odam.nl         */
+/*   Updated: 2021/02/14 13:40:45 by ivork         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ typedef struct		s_flags
 	bool			preci;
 }					t_flags;
 
+int					ft_printf(const char *str, ...);
 void				ft_print_char(char c, t_flags flags);
 void				ft_print_str(char *str, t_flags feat);
 void				ft_putnstr_fd(char *s, int fd, int n);
