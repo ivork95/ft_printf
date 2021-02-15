@@ -6,7 +6,7 @@
 /*   By: ivork <ivork@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/01/15 22:39:26 by ivork         #+#    #+#                 */
-/*   Updated: 2021/02/14 14:07:38 by ivork         ########   odam.nl         */
+/*   Updated: 2021/02/15 12:59:15 by ivork         ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,15 +21,15 @@ t_flags	ft_fill_flag(const char *str, int i, t_flags flag, va_list ap)
 		ft_putchar_fd(' ', 1);
 		g_count++;
 	}
-	if (str[i] == '-')
+	else if (str[i] == '-')
 		flag.left_align = true;
-	if (str[i] == '0' && !(ft_isdigit(str[i - 1])))
+	else if (str[i] == '0' && !(ft_isdigit(str[i - 1])))
 		flag.zero = true;
-	if (str[i] == '*' && str[i - 1] != '.')
+	else if (str[i] == '*' && str[i - 1] != '.')
 		flag.width = va_arg(ap, int);
-	if (ft_isdigit(str[i]) && flag.width == 0 && flag.precision == 0)
+	else if (ft_isdigit(str[i]) && flag.width == 0 && flag.precision == 0)
 		flag.width = ft_atoi(&str[i]);
-	if (str[i] == '.')
+	else if (str[i] == '.')
 	{
 		flag.preci = true;
 		if (str[i + 1] == '*')
@@ -44,17 +44,17 @@ void	ft_check_speci(t_flags flag, va_list ap)
 {
 	if (flag.specifier == '%')
 		ft_print_char('%', flag);
-	if (flag.specifier == 'c')
+	else if (flag.specifier == 'c')
 		ft_print_char(va_arg(ap, int), flag);
-	if (flag.specifier == 's')
+	else if (flag.specifier == 's')
 		ft_print_str(va_arg(ap, char*), flag);
-	if ((flag.specifier == 'i') || (flag.specifier == 'd'))
+	else if ((flag.specifier == 'i') || (flag.specifier == 'd'))
 		ft_print_int(va_arg(ap, int), flag);
-	if (flag.specifier == 'u')
+	else if (flag.specifier == 'u')
 		ft_print_unsi(va_arg(ap, unsigned int), flag);
-	if ((flag.specifier == 'x') || (flag.specifier == 'X'))
+	else if ((flag.specifier == 'x') || (flag.specifier == 'X'))
 		ft_print_hexa(va_arg(ap, unsigned int), flag);
-	if (flag.specifier == 'p')
+	else if (flag.specifier == 'p')
 		ft_print_point(va_arg(ap, unsigned long long), flag);
 }
 
@@ -86,14 +86,12 @@ int		ft_printf(const char *str, ...)
 	i = 0;
 	g_count = 0;
 	va_start(ap, str);
-	while (str[i] != '\0')
+	while (str[i] != '\0' && g_count != -1)
 	{
 		if (str[i] == '%')
 		{
 			i++;
 			i = ft_check_flags(str, i, ap);
-			if (g_count == -1)
-				return (-1);
 		}
 		else
 		{
